@@ -30,7 +30,11 @@ interface GameDao {
     @Query("SELECT * FROM detailGames")
     fun getAllNews(): List<News>
 
-    @Query("UPDATE Akun SET first_name = :firstName, last_name = :lastName, password = :password WHERE id = :id")
-    fun updateAkun(id: Int, firstName: String, lastName: String, password: String)
+//    @Query("UPDATE Akun SET first_name = :firstName, last_name = :lastName, password = :password WHERE id = :id")
+//    fun updateAkun(id: Int, firstName: String, lastName: String, password: String)
+
+    @Query("UPDATE Akun SET first_name = :firstName, last_name = :lastName, email = :email, noHp = :phoneNumber, " +
+            "password = :password WHERE id = :id")
+    fun updateAkun(id: Int, firstName: String, lastName: String, email: String, phoneNumber: String, password: String)
 
 }

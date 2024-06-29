@@ -28,8 +28,15 @@ class ProfileFragment : Fragment() {
         loadUserData()
         viewModel.akunLD.observe(viewLifecycleOwner) { akun ->
             akun?.let {
+//                binding.editTextFirstName.setText(it.firstName)
+//                binding.editTextLastName.setText(it.lastName)
+//                binding.editTextPassword.setText(it.password)
+
+
                 binding.editTextFirstName.setText(it.firstName)
                 binding.editTextLastName.setText(it.lastName)
+                binding.editTextEmail.setText(it.email)
+                binding.editTextPhoneNumber.setText(it.noHp)
                 binding.editTextPassword.setText(it.password)
             }
         }
@@ -72,6 +79,8 @@ class ProfileFragment : Fragment() {
 
         val firstName = binding.editTextFirstName.text.toString()
         val lastName = binding.editTextLastName.text.toString()
+        val email = binding.editTextEmail.text.toString()
+        val phoneNumber = binding.editTextPhoneNumber.text.toString()
         val password = binding.editTextPassword.text.toString()
 
         editor?.apply {
@@ -80,11 +89,13 @@ class ProfileFragment : Fragment() {
             }
             putString("first_name", firstName)
             putString("last_name", lastName)
+            putString("email", email)
+            putString("noHp", phoneNumber)
             putString("password", password)
         }?.apply()
 
         userId?.let {
-            viewModel.updateProfile(it, firstName, lastName, password)
+            viewModel.updateProfile(it, firstName, lastName, email, phoneNumber, password)
         }
         Toast.makeText(context, "Data saved successfully.", Toast.LENGTH_SHORT).show()
         loadUserData()

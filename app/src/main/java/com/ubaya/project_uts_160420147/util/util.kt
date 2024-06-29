@@ -49,6 +49,6 @@ fun buildDb(context: Context): GameDatabase {
         GameDatabase::class.java,
         DB_NAME
     )
-        .addMigrations(MIGRATION_1_2)
+        .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
         .build()
 }
