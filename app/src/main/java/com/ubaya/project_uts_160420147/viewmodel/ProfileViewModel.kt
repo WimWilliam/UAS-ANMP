@@ -38,7 +38,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             val akun = db.gameDao().cekLogin(username, password)
             akunLD.postValue(akun)
             akun?.let {
-                // Save the user ID to shared preferences
+
                 val sharedPreferences = getApplication<Application>().getSharedPreferences("user_prefs", 0)
                 with(sharedPreferences.edit()) {
                     putInt("user_id", it.id)
@@ -48,11 +48,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-//    fun updateProfile(akunId: Int, firstName: String, lastName: String, password: String) {
-//        launch {
-//            db.gameDao().updateAkun(akunId,firstName,lastName, password)
-//        }
-//    }
+
 
     fun updateProfile(akunId: Int, firstName: String, lastName: String, email: String, phoneNumber: String, password: String) {
         launch {
